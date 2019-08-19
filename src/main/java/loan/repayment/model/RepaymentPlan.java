@@ -35,7 +35,7 @@ public class RepaymentPlan {
 		List<RepaymentPlanDO> repaymentPlanDOList = new ArrayList<RepaymentPlanDO>();
 		Double initialOutstandingPrincipal = loanAmount;
 
-		for(int month = 1; month <= duration; month++) {
+		for(int month = 0; month < duration; month++) {
 
 			RepaymentPlanDO monthlyRepaymentPlanDO = new RepaymentPlanDO();
 			monthlyRepaymentPlanDO = generatePlanForAMonth(initialOutstandingPrincipal, month);

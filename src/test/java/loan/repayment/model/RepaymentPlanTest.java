@@ -31,7 +31,6 @@ public class RepaymentPlanTest {
 
 		repaymentPlanDOList.forEach(repayment -> System.out.println(repayment));
 
-		//Assert.assertNotNull(repaymentPlanDOList);
 		Assert.assertEquals(duration, repaymentPlanDOList.size());
 	}
 }
