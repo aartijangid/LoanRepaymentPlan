@@ -1,6 +1,7 @@
 package loan.repayment.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.junit.Assert;
@@ -13,11 +14,11 @@ import loan.repayment.model.RepaymentPlan;
 public class RepaymentPlanTest {
 	@Test
 	public void givenLoanApplicationSouldReturnRepaymentPlan() {
-
+		
 		Double loanAmount = 5000.00;
 		Double nominalRate = 5.0;
 		int duration = 24;
-		LocalDateTime startDate = LocalDateTime.parse("2018-01-01T00:00:01");
+		LocalDateTime startDate = LocalDateTime.parse("2018-01-01T00:00:01Z", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX"));
 
 		LoanApplicationDO loanApplicationDO = new LoanApplicationDO();
 		loanApplicationDO.setLoanAmount(loanAmount);

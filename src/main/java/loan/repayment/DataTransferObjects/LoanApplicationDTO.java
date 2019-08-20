@@ -1,32 +1,55 @@
 package loan.repayment.DataTransferObjects;
 
+import java.time.LocalDateTime;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class LoanApplicationDTO {
-	private String loanAmount = "";
-	private String nominalRate = "";
-	private String duration = "";
-	private String startDate = "";
-	public String getLoanAmount() {
+	@NotNull(message = "Loan amount is required")
+	@Min(value = 1)
+	private Double loanAmount;
+
+	@NotNull(message = "Interest rate is required")
+	@Min(value = 0)
+	private Double nominalRate;
+
+	@NotNull(message = "Duration is number of months required")
+	@Min(value = 1)
+	private Integer duration;
+
+	@NotNull(message = "Start date is required")
+	private LocalDateTime startDate;
+
+	public Double getLoanAmount() {
 		return loanAmount;
 	}
-	public void setLoanAmount(String loanAmount) {
+
+	public void setLoanAmount(Double loanAmount) {
 		this.loanAmount = loanAmount;
 	}
-	public String getNominalRate() {
+
+	public Double getNominalRate() {
 		return nominalRate;
 	}
-	public void setNominalRate(String nominalRate) {
+
+	public void setNominalRate(Double nominalRate) {
 		this.nominalRate = nominalRate;
 	}
-	public String getDuration() {
+
+	public Integer getDuration() {
 		return duration;
 	}
-	public void setDuration(String duration) {
+
+	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-	public String getStartDate() {
+
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
 }

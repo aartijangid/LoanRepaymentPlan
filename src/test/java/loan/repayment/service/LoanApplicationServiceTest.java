@@ -1,7 +1,7 @@
 package loan.repayment.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import loan.repayment.DataObjects.RepaymentPlanDO;
 import loan.repayment.DataTransferObjects.LoanApplicationDTO;
 import loan.repayment.DataTransferObjects.RepaymentPlanDTO;
 
@@ -20,11 +19,11 @@ public class LoanApplicationServiceTest {
 	private LoanApplicationService loanApplicationService;
 
 	private LoanApplicationDTO loanApplicationDTO = new LoanApplicationDTO();
-	
-	private String LOAN_AMOUNT = "5000.00";
-	private String NOMINAL_INTEREST_RATE = "5.0";
-	private String DURATION_IN_MONTHS = "2";
-	private String START_DATE = "2018-01-01T00:00:01";
+
+	private Double LOAN_AMOUNT = 5000.00;
+	private Double NOMINAL_INTEREST_RATE = 5.0;
+	private int DURATION_IN_MONTHS = 2;
+	private LocalDateTime START_DATE = LocalDateTime.parse("2018-01-01T00:00:01Z", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX"));;
 
 	@Before
 	public void setUp() {
@@ -41,6 +40,6 @@ public class LoanApplicationServiceTest {
 		List<RepaymentPlanDTO> repaymentPlanDTOList = loanApplicationService.serve(loanApplicationDTO);
 
 		// then
-		Assert.assertEquals(Integer.parseInt(DURATION_IN_MONTHS), repaymentPlanDTOList.size());
+		Assert.assertEquals(DURATION_IN_MONTHS, repaymentPlanDTOList.size());
 	}
 }
